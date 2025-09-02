@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoveConnect - Find Your Perfect Match</title>
+    <meta
+      name="description"
+      content="Join thousands of singles looking for meaningful connections. Start your love journey today with LoveConnect."
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="index-page container">
+      <div class="index-page__body">
+        <img src="../images/dating.jpg" alt="Start your love journey today" class="index-page__image" />
+        <section class="index-page__content">
+          <h1 class="index-page__title">How to <br /> Participate</h1>
+  
+          <div class="index-page__list">
+            <div class="index-page__list-item">Subscribe to our News</div>
+            <div class="index-page__list-item">
+                <button class="index-page__button">Sign up</butto>
+            </div>
+            <div class="index-page__list-item">Check your email inbox</div>
+            <div class="index-page__list-item">Wait till September 22</div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Registration Popup -->
+    <dialog id="registrationPopup" class="popup">
+      <div class="popup__content">
+        <button class="popup__close" aria-label="Close popup">&times;</button>
+        
+        <div class="popup__header">
+          <h2 class="popup__title">Sign Up</h2>
+          <p class="popup__subtitle">Join thousands of singles looking for meaningful connections</p>
+        </div>
+        
+        <form id="registrationForm" class="popup__form">
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form-input" 
+              placeholder="Enter your email"
+              required
+            >
+          </div>
+          
+          <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              class="form-input" 
+              placeholder="Enter your password"
+              minlength="8"
+              required
+            >
+          </div>
+          
+          <button type="submit" class="popup__submit-btn">
+            Sign Up
+          </button>
+        </form>
+        
+        <div id="successMessage" class="success-message" style="display: none;">
+          <div class="success-message__icon">✓</div>
+          <h3 class="success-message__title">Thank You!</h3>
+          <p class="success-message__text">To complete registration, please check your email</p>
+          <p class="success-message__redirect">Redirecting you to your dashboard...</p>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

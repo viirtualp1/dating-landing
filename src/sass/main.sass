@@ -1,0 +1,317 @@
+@use "variables" as vars
+
+html,
+body
+  width: 100%
+  height: 100%
+
+body
+  font-family: vars.$font-primary
+  font-weight: vars.$font-weight-normal
+  line-height: 1.6
+  margin: 0
+  padding: 0
+
+.container
+  max-width: vars.$container-width
+  margin: 0 auto
+
+.index-page
+  display: flex
+  justify-content: center
+  height: 100%
+  padding-block: 24px
+  padding-inline: 16px
+
+  @media (min-width: vars.$breakpoint-sm)
+    align-items: center
+    padding-block: 0
+
+  @media (min-width: vars.$breakpoint-xxl)
+    padding-inline: 0
+
+  &__body
+    display: flex
+    flex-direction: column
+    gap: 20px
+
+    @media (min-width: vars.$breakpoint-sm)
+      align-items: center
+
+    @media (min-width: vars.$breakpoint-lg)
+      gap: 108px
+      flex-direction: row
+  
+  &__content
+    max-width: 483px
+
+  &__title
+    margin-top: 0
+    margin-bottom: 1rem
+    font-size: clamp(2.5rem, 4vw, 5rem)
+    line-height: 1.1
+    font-weight: vars.$font-weight-black
+    background: vars.$gradient
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+  &__image
+    width: 100%
+    height: auto
+    max-width: 290px
+
+    @media (min-width: vars.$breakpoint-sm)
+      max-width: 390px
+
+    @media (min-width: vars.$breakpoint-md)
+      max-width: 490px
+
+    @media (min-width: vars.$breakpoint-xxl)
+      max-width: 729px
+
+  &__list
+    display: flex
+    flex-direction: column
+    gap: 12px
+    
+    counter-reset: list; 
+
+  &__list-item
+    display: flex
+    align-items: center
+    width: 100%
+    gap: 12px;
+    font-size: clamp(1.3rem, 2.5vw, 2rem)
+
+    &::before
+      content: counter(list) ". "
+      counter-increment: list
+      background: vars.$gradient
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: clamp(2rem, 2.5vw, 3rem)
+      font-weight: vars.$font-weight-black
+
+  &__button
+    width: 100%
+    min-height: clamp(50px, 2vw, 68px)
+    margin: 0
+    padding: 0 48px
+    border-radius: 8px 
+    cursor: pointer
+    text-transform: uppercase
+    font-weight: vars.$font-weight-bold
+    font-size: 1rem
+    color: vars.$color-white
+    outline: none
+    appearance: none
+    border: none
+    background: vars.$gradient
+    position: relative
+    overflow: hidden
+    transition: all 0.3s ease
+    
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      left: -100%
+      width: 100%
+      height: 100%
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent)
+      transition: left 0.5s ease
+      
+    &:hover
+      box-shadow: 0 8px 25px rgba(229, 23, 38, 0.3)
+      
+      &::before
+        left: 100%
+        
+    &:active
+      box-shadow: 0 4px 15px rgba(229, 23, 38, 0.2)
+
+.popup
+  border: none
+  border-radius: 16px
+  padding: 0
+  max-width: 500px
+  width: 90vw
+  background: transparent
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3)
+  
+  &::backdrop
+    background: rgba(0, 0, 0, 0.5)
+    backdrop-filter: blur(4px)
+    
+  &__content
+    background: white
+    border-radius: 16px
+    padding: 40px
+    position: relative
+    
+  &__close
+    position: absolute
+    top: 20px
+    right: 20px
+    background: none
+    border: none
+    font-size: 24px
+    cursor: pointer
+    color: #666
+    width: 32px
+    height: 32px
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 50%
+    transition: all 0.2s ease
+    
+    &:hover
+      background: #f5f5f5
+      color: #333
+      
+  &__header
+    text-align: center
+    margin-bottom: 32px
+    
+  &__title
+    font-size: 2rem
+    font-weight: vars.$font-weight-bold
+    color: #333
+    margin: 0 0 8px 0
+    
+  &__subtitle
+    color: #666
+    font-size: 1rem
+    margin: 0
+    
+  &__form
+    display: flex
+    flex-direction: column
+    gap: 24px
+    
+  &__submit-btn
+    background: vars.$gradient
+    color: white
+    border: none
+    border-radius: 8px
+    padding: 16px 24px
+    font-size: 1rem
+    font-weight: vars.$font-weight-bold
+    text-transform: uppercase
+    cursor: pointer
+    transition: all 0.3s ease
+    position: relative
+    overflow: hidden
+    
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      left: -100%
+      width: 100%
+      height: 100%
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent)
+      transition: left 0.5s ease
+      
+    &:hover
+      box-shadow: 0 8px 25px rgba(229, 23, 38, 0.3)
+      
+      &::before
+        left: 100%
+        
+    &:active
+      box-shadow: 0 4px 15px rgba(229, 23, 38, 0.2)
+      
+    &:disabled
+      opacity: 0.6
+      cursor: not-allowed
+
+.form-group
+  display: flex
+  flex-direction: column
+  gap: 8px
+  
+.form-label
+  font-weight: vars.$font-weight-medium
+  color: #333
+  font-size: 0.9rem
+  
+.form-input
+  padding: 12px 16px
+  border: 2px solid #e1e5e9
+  border-radius: 8px
+  font-size: 1rem
+  transition: all 0.2s ease
+  background: white
+  
+  &:focus
+    outline: none
+    border-color: #E51726
+    box-shadow: 0 0 0 3px rgba(229, 23, 38, 0.1)
+    
+  &:invalid
+    border-color: #e74c3c
+    
+  &::placeholder
+    color: #999
+
+.field-error
+  color: #e74c3c
+  font-size: 0.8rem
+  margin-top: 4px
+  display: flex
+  align-items: center
+  gap: 4px
+  animation: fadeIn 0.3s ease-in
+  font-weight: 500
+
+@keyframes fadeIn
+  from
+    opacity: 0
+    transform: translateY(-5px)
+  to
+    opacity: 1
+    transform: translateY(0)
+
+.success-message
+  text-align: center
+  padding: 40px 20px
+  
+  &__icon
+    width: 80px
+    height: 80px
+    background: vars.$gradient
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 2rem
+    color: white
+    margin: 0 auto 24px
+    font-weight: bold
+    
+  &__title
+    font-size: 2rem
+    font-weight: vars.$font-weight-bold
+    color: #333
+    margin: 0 0 16px 0
+    
+  &__text
+    color: #666
+    font-size: 1.1rem
+    margin: 0 0 16px 0
+    line-height: 1.5
+    
+  &__redirect
+    color: #999
+    font-size: 0.9rem
+    margin: 0
+    font-style: italic
+    animation: pulse 1.5s ease-in-out infinite
+    
+@keyframes pulse
+  0%, 100%
+    opacity: 0.6
+  50%
+    opacity: 1

@@ -1,0 +1,46 @@
+{
+  "name": "dating-landing",
+  "version": "1.0.0",
+  "description": "A modern dating landing page built with Gulp, SASS, and Vanilla JavaScript",
+  "main": "gulpfile.js",
+  "scripts": {
+    "dev": "gulp dev",
+    "start": "gulp dev",
+    "build": "gulp build",
+    "clean": "gulp clean",
+    "styles": "gulp styles",
+    "scripts": "gulp scripts",
+    "html": "gulp html",
+    "images": "gulp images"
+  },
+  "keywords": [
+    "dating",
+    "landing-page",
+    "gulp",
+    "sass",
+    "vanilla-js",
+    "responsive",
+    "template"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/dating-landing.git"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "del": "^8.0.0",
+    "gulp": "^5.0.1",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^8.0.0",
+    "gulp-sass": "^6.0.1",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.91.0",
+    "typescript": "^5.9.2"
+  }
+}
