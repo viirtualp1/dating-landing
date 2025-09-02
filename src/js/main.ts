@@ -92,11 +92,9 @@ const validateForm = (data: RegistrationData): boolean => {
   const { emailInput, passwordInput } = getElements();
   let isValid = true;
 
-  // Clear previous errors
   removeFieldError(emailInput);
   removeFieldError(passwordInput);
 
-  // Validate email
   if (!data.email || data.email.trim() === "") {
     showFieldError(emailInput, "Email is required");
     isValid = false;
@@ -105,7 +103,6 @@ const validateForm = (data: RegistrationData): boolean => {
     isValid = false;
   }
 
-  // Validate password
   if (!data.password || data.password === "") {
     showFieldError(passwordInput, "Password is required");
     isValid = false;
@@ -143,20 +140,7 @@ const makeApiRequest = async (
     requestOptions.headers = headersWithoutContentType;
   }
 
-  console.log("Making API request:", {
-    url,
-    method: requestOptions.method,
-    headers: requestOptions.headers,
-    body: requestOptions.body,
-  });
-
   const response = await fetch(url, requestOptions);
-
-  console.log("API response:", {
-    status: response.status,
-    statusText: response.statusText,
-    headers: Object.fromEntries(response.headers.entries()),
-  });
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
@@ -171,7 +155,6 @@ const checkAuth = async (
 ): Promise<AuthResponse> => {
   try {
     const credentials = btoa(`${email}:${password}`);
-    console.log("Checking auth for user:", email);
 
     const response = await makeApiRequest("https://api.dating.com/identity", {
       method: "GET",
@@ -184,21 +167,17 @@ const checkAuth = async (
 
     return { success: true, token: token || undefined };
   } catch (error) {
-    console.log("Auth check failed, proceeding with registration:", error);
     return { success: false };
   }
 };
 
 const registerUser = async (data: RegistrationData): Promise<AuthResponse> => {
-  console.log("Registering user with data:", data);
-
   const response = await makeApiRequest("https://api.dating.com/identity", {
     method: "PUT",
     body: JSON.stringify(data),
   });
 
   const token = response.headers.get("X-Token");
-  console.log("Registration response token:", token);
 
   return { success: true, token: token || undefined };
 };
@@ -279,7 +258,6 @@ const handleRegistration = async (data: RegistrationData): Promise<void> => {
 
   try {
     const authResult = await checkAuth(data.email, data.password);
-    console.log("Auth result:", authResult);
 
     if (authResult.success && authResult.token) {
       saveToken(authResult.token);
