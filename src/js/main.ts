@@ -13,7 +13,13 @@ interface AuthResponse {
   token?: string;
 }
 
-const getElements = () => ({
+const CONSTANTS = {
+  POPUP_DELAY: 100,
+  REDIRECT_DELAY: 2500,
+  FORM_ERROR_DELAY: 5000,
+};
+
+const elements = {
   popup: document.getElementById("registrationPopup") as HTMLDialogElement,
   form: document.getElementById("registrationForm") as HTMLFormElement,
   closeBtn: document.querySelector(".popup__close") as HTMLButtonElement,
@@ -22,7 +28,7 @@ const getElements = () => ({
   signUpBtn: document.querySelector(".index-page__button") as HTMLButtonElement,
   emailInput: document.getElementById("email") as HTMLInputElement,
   passwordInput: document.getElementById("password") as HTMLInputElement,
-});
+};
 
 const createErrorElement = (message: string): HTMLElement => {
   const errorElement = document.createElement("div");
@@ -76,7 +82,7 @@ const showFormError = (message: string): void => {
     if (errorElement && errorElement.parentNode) {
       errorElement.parentNode.removeChild(errorElement);
     }
-  }, 5000);
+  }, CONSTANTS.FORM_ERROR_DELAY);
 };
 
 const validateEmail = (email: string): boolean => {
@@ -89,7 +95,7 @@ const validatePassword = (password: string): boolean => {
 };
 
 const validateForm = (data: RegistrationData): boolean => {
-  const { emailInput, passwordInput } = getElements();
+  const { emailInput, passwordInput } = elements;
   let isValid = true;
 
   removeFieldError(emailInput);
@@ -202,23 +208,23 @@ const checkExistingAuth = (): void => {
 };
 
 const openPopup = (): void => {
-  const { popup, emailInput } = getElements();
+  const { popup, emailInput } = elements;
 
   popup.showModal();
   resetForm();
 
-  setTimeout(() => emailInput.focus(), 100);
+  setTimeout(() => emailInput.focus(), CONSTANTS.POPUP_DELAY);
 };
 
 const closePopup = (): void => {
-  const { popup } = getElements();
+  const { popup } = elements;
   popup.close();
   resetForm();
 };
 
 const resetForm = (): void => {
   const { form, successMessage, submitBtn, emailInput, passwordInput } =
-    getElements();
+    elements;
 
   form.reset();
   form.style.display = "flex";
@@ -236,18 +242,18 @@ const resetForm = (): void => {
 };
 
 const showSuccessMessage = (token: string): void => {
-  const { form, successMessage } = getElements();
+  const { form, successMessage } = elements;
 
   form.style.display = "none";
   successMessage.style.display = "block";
 
   setTimeout(() => {
     redirectToAuthZone(token);
-  }, 2500);
+  }, CONSTANTS.REDIRECT_DELAY);
 };
 
 const setLoadingState = (isLoading: boolean): void => {
-  const { submitBtn } = getElements();
+  const { submitBtn } = elements;
 
   submitBtn.disabled = isLoading;
   submitBtn.textContent = isLoading ? "Signing Up..." : "Sign Up";
@@ -284,7 +290,7 @@ const handleRegistration = async (data: RegistrationData): Promise<void> => {
 const handleFormSubmit = (e: Event): void => {
   e.preventDefault();
 
-  const { form } = getElements();
+  const { form } = elements;
   const formData = new FormData(form);
   const registrationData: RegistrationData = {
     email: formData.get("email") as string,
@@ -297,7 +303,7 @@ const handleFormSubmit = (e: Event): void => {
 };
 
 const setupRealTimeValidation = (): void => {
-  const { emailInput, passwordInput } = getElements();
+  const { emailInput, passwordInput } = elements;
 
   emailInput.addEventListener("blur", () => {
     const email = emailInput.value.trim();
@@ -334,7 +340,7 @@ const setupRealTimeValidation = (): void => {
 };
 
 const setupEventListeners = (): void => {
-  const { signUpBtn, closeBtn, popup, form } = getElements();
+  const { signUpBtn, closeBtn, popup, form } = elements;
 
   signUpBtn.addEventListener("click", openPopup);
 
@@ -358,7 +364,6 @@ const setupEventListeners = (): void => {
 };
 
 const init = (): void => {
-  checkExistingAuth();
   setupEventListeners();
 };
 

@@ -19,14 +19,21 @@
   <body>
     <main class="index-page container">
       <div class="index-page__body">
-        <img src="../images/dating.jpg" alt="Start your love journey today" class="index-page__image" />
+        <img
+          src="../images/dating.jpg"
+          alt="Start your love journey today"
+          class="index-page__image"
+        />
         <section class="index-page__content">
-          <h1 class="index-page__title">How to <br /> Participate</h1>
-  
+          <h1 class="index-page__title">
+            How to <br />
+            Participate
+          </h1>
+
           <div class="index-page__list">
             <div class="index-page__list-item">Subscribe to our News</div>
             <div class="index-page__list-item">
-                <button class="index-page__button">Sign up</butto>
+              <button class="index-page__button">Sign up</button>
             </div>
             <div class="index-page__list-item">Check your email inbox</div>
             <div class="index-page__list-item">Wait till September 22</div>
@@ -38,47 +45,49 @@
     <dialog id="registrationPopup" class="popup">
       <div class="popup__content">
         <button class="popup__close" aria-label="Close popup">&times;</button>
-        
+
         <div class="popup__header">
           <h2 class="popup__title">Sign Up</h2>
         </div>
-        
+
         <form id="registrationForm" class="popup__form">
           <div class="form-group">
             <label for="email" class="form-label">Email</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              class="form-input" 
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
               placeholder="Enter your email"
               required
-            >
+            />
           </div>
-          
+
           <div class="form-group">
             <label for="password" class="form-label">Password</label>
-            <input 
-              type="password" 
-              id="password" 
-              name="password" 
-              class="form-input" 
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-input"
               placeholder="Enter your password"
               minlength="8"
               required
-            >
+            />
           </div>
-          
-          <button type="submit" class="popup__submit-btn">
-            Sign Up
-          </button>
+
+          <button type="submit" class="popup__submit-btn">Sign Up</button>
         </form>
-        
-        <div id="successMessage" class="success-message" style="display: none;">
+
+        <div id="successMessage" class="success-message" style="display: none">
           <div class="success-message__icon">✓</div>
           <h3 class="success-message__title">Thank You!</h3>
-          <p class="success-message__text">To complete registration, please check your email</p>
-          <p class="success-message__redirect">Redirecting you to your dashboard...</p>
+          <p class="success-message__text">
+            To complete registration, please check your email
+          </p>
+          <p class="success-message__redirect">
+            Redirecting you to your dashboard...
+          </p>
         </div>
       </div>
     </dialog>
