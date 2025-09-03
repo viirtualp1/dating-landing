@@ -21,6 +21,7 @@ const CONSTANTS = {
 
 const elements = {
   popup: document.getElementById("registrationPopup") as HTMLDialogElement,
+  popupHeader: document.querySelector(".popup__header") as HTMLElement,
   form: document.getElementById("registrationForm") as HTMLFormElement,
   closeBtn: document.querySelector(".popup__close") as HTMLButtonElement,
   submitBtn: document.querySelector(".popup__submit-btn") as HTMLButtonElement,
@@ -212,6 +213,7 @@ const openPopup = (): void => {
 
   popup.showModal();
   resetForm();
+  blockScroll();
 
   setTimeout(() => emailInput.focus(), CONSTANTS.POPUP_DELAY);
 };
@@ -220,6 +222,15 @@ const closePopup = (): void => {
   const { popup } = elements;
   popup.close();
   resetForm();
+  unblockScroll();
+};
+
+const blockScroll = (): void => {
+  document.body.style.overflow = "hidden";
+};
+
+const unblockScroll = (): void => {
+  document.body.style.overflow = "auto";
 };
 
 const resetForm = (): void => {
@@ -230,7 +241,7 @@ const resetForm = (): void => {
   form.style.display = "flex";
   successMessage.style.display = "none";
   submitBtn.disabled = false;
-  submitBtn.textContent = "Sign Up";
+  submitBtn.textContent = "Submit";
 
   removeFieldError(emailInput);
   removeFieldError(passwordInput);
@@ -242,10 +253,11 @@ const resetForm = (): void => {
 };
 
 const showSuccessMessage = (token: string): void => {
-  const { form, successMessage } = elements;
+  const { form, successMessage, popupHeader } = elements;
 
   form.style.display = "none";
   successMessage.style.display = "block";
+  popupHeader.style.display = "none";
 
   setTimeout(() => {
     redirectToAuthZone(token);

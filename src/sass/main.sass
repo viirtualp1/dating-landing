@@ -134,7 +134,7 @@ body
   border: none
   border-radius: 16px
   padding: 0
-  max-width: 500px
+  max-width: 1270px
   width: 90vw
   background: transparent
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3)
@@ -168,17 +168,20 @@ body
     
     &:hover
       background: #f5f5f5
-      color: #333
+      color: vars.$gradient
       
   &__header
     text-align: center
-    margin-bottom: 32px
+
+    @media (min-width: vars.$breakpoint-sm)
+      margin-bottom: 32px
     
   &__title
-    font-size: 2rem
+    max-width: 560px
+    font-size: clamp(1rem, 2.5vw, 1.5rem)
     font-weight: vars.$font-weight-bold
     color: #333
-    margin: 0 0 8px 0
+    margin: 0 auto 8px auto
     
   &__subtitle
     color: #666
@@ -186,16 +189,22 @@ body
     margin: 0
     
   &__form
+    max-width: 600px
+    margin: auto
     display: flex
     flex-direction: column
     gap: 24px
     
   &__submit-btn
+    width: clamp(150px, 25vw, 240px)
+    height: 58px
+    margin: auto
+    padding: 16px 24px
+    text-transform: uppercase
     background: vars.$gradient
     color: white
     border: none
     border-radius: 8px
-    padding: 16px 24px
     font-size: 1rem
     font-weight: vars.$font-weight-bold
     text-transform: uppercase
@@ -239,8 +248,9 @@ body
   
 .form-input
   padding: 12px 16px
-  border: 2px solid #e1e5e9
-  border-radius: 8px
+  text-align: center
+  border: none
+  border-bottom: 2px solid #e1e5e9
   font-size: 1rem
   transition: all 0.2s ease
   background: white
@@ -248,7 +258,6 @@ body
   &:focus
     outline: none
     border-color: #E51726
-    box-shadow: 0 0 0 3px rgba(229, 23, 38, 0.1)
     
   &:invalid
     border-color: #e74c3c
@@ -276,7 +285,6 @@ body
 
 .success-message
   text-align: center
-  padding: 40px 20px
   
   &__icon
     width: 80px
@@ -292,14 +300,16 @@ body
     font-weight: bold
     
   &__title
-    font-size: 2rem
+    font-size: 2.5rem
     font-weight: vars.$font-weight-bold
-    color: #333
+    background: vars.$gradient
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
     margin: 0 0 16px 0
     
   &__text
-    color: #666
     font-size: 1.1rem
+    font-weight: 700
     margin: 0 0 16px 0
     line-height: 1.5
     
