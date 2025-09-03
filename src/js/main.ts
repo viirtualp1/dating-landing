@@ -3,11 +3,6 @@ interface RegistrationData {
   password: string;
 }
 
-interface ApiResponse {
-  success: boolean;
-  message?: string;
-}
-
 interface AuthResponse {
   success: boolean;
   token?: string;

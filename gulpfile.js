@@ -7,7 +7,6 @@ const htmlmin = require("gulp-htmlmin");
 const browserSync = require("browser-sync").create();
 const { deleteSync } = require("del");
 const typescript = require("gulp-typescript");
-// const imagemin = require("gulp-imagemin");
 
 const paths = {
   html: {
@@ -119,7 +118,6 @@ const build = series(clean, parallel(html, styles, scripts, images));
 
 const dev = series(build, parallel(watchFiles, serve));
 
-// Export tasks
 exports.clean = clean;
 exports.html = html;
 exports.styles = styles;
