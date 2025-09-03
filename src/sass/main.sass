@@ -138,16 +138,26 @@ body
   width: 90vw
   background: transparent
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3)
+
+  @media (min-width: vars.$breakpoint-lg)
+    min-height: 652px
   
   &::backdrop
     background: rgba(0, 0, 0, 0.5)
     backdrop-filter: blur(4px)
     
   &__content
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    padding: 40px
     background: white
     border-radius: 16px
-    padding: 40px
-    position: relative
+
+    @media (min-width: vars.$breakpoint-lg)
+      min-height: 652px
     
   &__close
     position: absolute
@@ -189,15 +199,15 @@ body
     margin: 0
     
   &__form
-    max-width: 600px
-    margin: auto
     display: flex
     flex-direction: column
     gap: 24px
+    width: 100%
+    max-width: 700px
     
   &__submit-btn
     width: clamp(150px, 25vw, 240px)
-    height: 58px
+    height: clamp(50px, 5vw, 68px)
     margin: auto
     padding: 16px 24px
     text-transform: uppercase
@@ -300,8 +310,8 @@ body
     font-weight: bold
     
   &__title
-    font-size: 2.5rem
-    font-weight: vars.$font-weight-bold
+    font-size: clamp(2rem, 5vw, 5rem)
+    font-weight: vars.$font-weight-black
     background: vars.$gradient
     -webkit-background-clip: text
     -webkit-text-fill-color: transparent

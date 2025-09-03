@@ -214,6 +214,7 @@ const openPopup = (): void => {
   popup.showModal();
   resetForm();
   blockScroll();
+  showSuccessMessage();
 
   setTimeout(() => emailInput.focus(), CONSTANTS.POPUP_DELAY);
 };
@@ -238,7 +239,6 @@ const resetForm = (): void => {
     elements;
 
   form.reset();
-  form.style.display = "flex";
   successMessage.style.display = "none";
   submitBtn.disabled = false;
   submitBtn.textContent = "Submit";
@@ -259,9 +259,9 @@ const showSuccessMessage = (token: string): void => {
   successMessage.style.display = "block";
   popupHeader.style.display = "none";
 
-  setTimeout(() => {
-    redirectToAuthZone(token);
-  }, CONSTANTS.REDIRECT_DELAY);
+  // setTimeout(() => {
+  // redirectToAuthZone(token);
+  // }, CONSTANTS.REDIRECT_DELAY);
 };
 
 const setLoadingState = (isLoading: boolean): void => {
