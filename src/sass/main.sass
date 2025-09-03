@@ -167,7 +167,7 @@ body
     border: none
     font-size: 24px
     cursor: pointer
-    color: #666
+    color: vars.$color-gray-light
     width: 32px
     height: 32px
     display: flex
@@ -190,11 +190,11 @@ body
     max-width: 560px
     font-size: clamp(1rem, 2.5vw, 1.5rem)
     font-weight: vars.$font-weight-bold
-    color: #333
+    color: vars.$color-gray-dark
     margin: 0 auto 8px auto
     
   &__subtitle
-    color: #666
+    color: vars.$color-gray-light
     font-size: 1rem
     margin: 0
     
@@ -253,7 +253,7 @@ body
   
 .form-label
   font-weight: vars.$font-weight-medium
-  color: #333
+  color: vars.$color-gray-dark
   font-size: 0.9rem
   
 .form-input
@@ -270,13 +270,13 @@ body
     border-color: #E51726
     
   &:invalid
-    border-color: #e74c3c
+    border-color: vars.$color-danger
     
   &::placeholder
-    color: #999
+    color: vars.$color-danger
 
 .field-error
-  color: #e74c3c
+  color: vars.$color-danger
   font-size: 0.8rem
   margin-top: 4px
   display: flex
@@ -324,7 +324,7 @@ body
     line-height: 1.5
     
   &__redirect
-    color: #999
+    color: vars.$color-gray
     font-size: 0.9rem
     margin: 0
     font-style: italic
