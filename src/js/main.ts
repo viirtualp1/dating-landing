@@ -267,7 +267,7 @@ const setLoadingState = (isLoading: boolean): void => {
   const { submitBtn } = elements;
 
   submitBtn.disabled = isLoading;
-  submitBtn.textContent = isLoading ? "Signing Up..." : "Sign Up";
+  submitBtn.textContent = isLoading ? "..." : "Sign Up";
 };
 
 const handleRegistration = async (data: RegistrationData): Promise<void> => {
